@@ -7,6 +7,9 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
+using Microsoft.EntityFrameworkCore;
+using beltprep.Models;
+
 namespace beltprep
 {
     public class Startup
@@ -21,6 +24,8 @@ namespace beltprep
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddDbContext<UserDBContext>(options => options.UseNpgsql(Configuration["DBInfo:ConnectionString"]));
+            services.AddSession();
             services.AddMvc();
         }
 
@@ -37,13 +42,9 @@ namespace beltprep
             }
 
             app.UseStaticFiles();
+            app.UseSession();
+            app.UseMvc();
 
-            app.UseMvc(routes =>
-            {
-                routes.MapRoute(
-                    name: "default",
-                    template: "{controller=Home}/{action=Index}/{id?}");
-            });
         }
     }
 }
