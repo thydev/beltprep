@@ -10,12 +10,12 @@ namespace beltprep.Controllers
 {
     public class HomeController : Controller
     {
-        [HttpGet]
-        [Route("")]
-        public IActionResult Index()
-        {
-            return View();
-        }
+        // [HttpGet]
+        // [Route("")]
+        // public IActionResult Index()
+        // {
+        //     return View();
+        // }
 
         
 

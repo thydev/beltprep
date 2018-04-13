@@ -1,0 +1,40 @@
+
+@{
+    ViewData["Title"] = "Add a new cutomer";
+}
+
+<div class="wells wells-sm">
+    <h3>Current Auctions - @ViewBag.User.FullName</h3>
+    <h3>Current Wallet: $ @ViewBag.User.Wallet</h3>
+    <a class="btn btn-primary" asp-controller="Auction" asp-action="New">New Auction</a>
+    <div class="wells wells-sm">
+        <table class="table table-striped table-bordered">
+            <tr>
+                <td>Product</td>
+                <th>Seller</th>
+                <th>Top Bid</th>
+                <th>Time Remaining</th>
+                <th colspan="2" class="text-center">Actions</th>
+            </tr>
+        @foreach(var r in @ViewBag.Auctions) {
+            <tr>
+                <td>
+                    <a asp-controller="Auction" asp-action="ShowBid" asp-route-AuctionId="@r.AuctionId">@r.ProductName</a></td>
+                <td>
+                    @r.User.FullName
+                </td>
+                <td>@r.highestBid2</td>
+                <td>@r.RemainingDay day(s)</td>
+                <td>
+                    @if (@r.User.UserId == @ViewBag.User.UserId) {
+                        <form action="/Auction/Delete/@r.AuctionId" method="post">
+                            @Html.AntiForgeryToken()
+                            <button type="submit" class="btn btn-link ">Delete</button>
+                        </form>
+                    }
+                </td>
+            </tr>
+        }
+        </table>
+    </div>
+</div>

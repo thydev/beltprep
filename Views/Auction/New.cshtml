@@ -1,0 +1,54 @@
+
+@{
+    ViewData["Title"] = "Register";
+}
+@model beltprep.Models.AuctionViewModel
+
+<div class="wells wells-sm">
+    <form asp-controller="Auction" asp-action="Create" method="post">
+        <div class="form-horizontal">
+        <h3>Register a new Auction</h3>
+        <hr />
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <div class="form-group">
+            <label asp-for="ProductName" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="ProductName" class="form-control" />
+                <span asp-validation-for="ProductName" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="Description" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+
+                <textarea asp-for="Description" class="form-control"  cols="30" rows="3"></textarea>
+                <span asp-validation-for="Description" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="StartAmount" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="StartAmount" class="form-control" />
+                <span asp-validation-for="StartAmount" class="text-danger"></span>
+            </div>
+        </div>
+        
+        <div class="form-group">
+            <label asp-for="EndDate" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="EndDate" class="form-control" />
+                <span asp-validation-for="EndDate" class="text-danger"></span>
+            </div>
+        </div>
+        
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Create Auction" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+
+    </form>
+
+</div>

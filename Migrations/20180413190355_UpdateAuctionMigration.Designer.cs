@@ -11,9 +11,10 @@ using System;
 namespace beltprep.Migrations
 {
     [DbContext(typeof(UserDBContext))]
-    partial class UserDBContextModelSnapshot : ModelSnapshot
+    [Migration("20180413190355_UpdateAuctionMigration")]
+    partial class UpdateAuctionMigration
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -40,8 +41,6 @@ namespace beltprep.Migrations
                     b.Property<DateTime>("UpdatedAt");
 
                     b.Property<int>("UserId");
-
-                    b.Property<decimal>("highestBid2");
 
                     b.HasKey("AuctionId");
 

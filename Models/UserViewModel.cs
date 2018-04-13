@@ -9,27 +9,22 @@ namespace beltprep.Models
         
         public int UserId { get; set; }
 
-        [Required(ErrorMessage = "First name must be at least 4 characters long")]
-        [MinLength(4)]
-        [RegularExpression(@"^[a-zA-Z]+$", ErrorMessage = "Name can only contain letters")]
+        [Required(ErrorMessage = "Username must be greater than 3 and less than 20")]
+        [MinLength(3)]
+        [MaxLength(20)]
+        public string UserName { get; set; }   
+
+        [Required(ErrorMessage = "First name is required")]
         [Display(Name="First name")]
         public string FirstName { get; set; }
 
-        [Required(ErrorMessage = "Last name must be at least 4 characters long")]
-        [MinLength(4)]
+        [Required(ErrorMessage = "Last name is required")]
         [Display(Name="Last name")]
         public string LastName { get; set; }
-
-        [Required(ErrorMessage = "Please input a valid e-mail address")]
-        [EmailAddress]
-        // [EmailValidate(context)]
-        public string Email { get; set; }
-
-        public int Level { get; set; }
         
-        [Required(ErrorMessage = "Password must be at least 4 characters long")]
+        [Required(ErrorMessage = "Password must be at least 8 characters long")]
         [DataType(DataType.Password)]
-        [MinLength(4)]
+        [MinLength(8)]
         public string Password { get; set; }
 
         [Compare("Password", ErrorMessage = "Password and confirmation must match.")]
@@ -39,5 +34,5 @@ namespace beltprep.Models
 
         
     }
-    
+
 }

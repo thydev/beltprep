@@ -2,6 +2,7 @@ using System;
 using System.Linq;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
+using Microsoft.EntityFrameworkCore;
 
 namespace beltprep.Models
 {
@@ -19,7 +20,7 @@ namespace beltprep.Models
 
         public List<Auction> Auctions { get; set; }
         public List<Bid> Bids { get; set; }
-        
+
         public User()
         {
             Bids = new List<Bid>();

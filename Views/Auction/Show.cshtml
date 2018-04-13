@@ -1,0 +1,33 @@
+
+@{
+    ViewData["Title"] = "Bid time";
+}
+
+<hr />
+<div class="container wells wells-sm">
+    <div class="row">
+        <h2>@ViewBag.Auction.ProductName</h2>
+        <p>Created By: @ViewBag.Auction.User.FullName</p>
+        <p>Time Remaining: @ViewBag.Auction.RemainingDay day(s)</p>
+        <p>Description: @ViewBag.Auction.Description</p>
+    </div>
+
+    <div class="row">
+        <h4>Current Highest Bid: $ @ViewBag.Auction.HighestBid</h4>
+        @if ( @ViewBag.Auction.HighestBidder != null) {
+        <h4>By: @ViewBag.Auction.HighestBidder.FullName</h4>
+        }
+        
+        <p><h5 class="text-danger">@TempData["Errors"]</h5></p>
+        <form asp-controller="Auction" asp-action="PostBid" method="post">
+            @Html.AntiForgeryToken()
+            <input type="hidden" name="AuctionId" value="@ViewBag.Auction.AuctionId" />
+            <input type="number" name="BidAmount" />
+            <br>
+            <button type="submit">Bid!</button>
+        </form>
+    </div>
+
+    
+</div>
+

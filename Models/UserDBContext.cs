@@ -1,5 +1,5 @@
 using Microsoft.EntityFrameworkCore;
- 
+using System.Linq;
 namespace beltprep.Models
 {
     public class UserDBContext : DbContext
@@ -13,8 +13,8 @@ namespace beltprep.Models
         // This DbSet contains objects and database table
         // DbSet<ModelName> DatabaseTabaleName {get; set;}
         public DbSet<User> Users { get; set; }
-        // public DbSet<Message> Messages { get; set; }
-        // public DbSet<Comment> Comments { get; set; }
+        public DbSet<Auction> Auctions { get; set; }
+        public DbSet<Bid> Bids { get; set; }
         
     }
 }
